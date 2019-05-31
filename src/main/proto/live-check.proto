@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "co.sam.livecheck";
+
+
+package livecheck;
+
+service LiveChecker {
+    rpc Live(LiveRequest) returns (LiveReply) {}
+
+    rpc Ping(PingRequest) returns (stream PingResponse) {}
+
+}
+
+message LiveRequest {}
+
+message LiveReply {
+    string message = 1;
+}
+
+message PingRequest {
+    string message = 1;
+}
+
+message PingResponse {
+    string message = 1;
+}
