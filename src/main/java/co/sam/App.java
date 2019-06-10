@@ -9,14 +9,18 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        LiveCheckerClient client = new LiveCheckerClient("localhost", 50051);
+        String serverEndpoint = System.getenv().getOrDefault("GRPC_SERVER", "java-grpc-server");
+        int serverPort = Integer.parseInt(System.getenv().getOrDefault("GRPC_PORT", "0"));
+        String apiKey = "AIzaSyC0LcIf0WJMpbCy9nVpqKZ9RAl8LaK1zJQ";
 
-        try{
+        LiveCheckerClient client = new LiveCheckerClient(serverEndpoint, serverPort, apiKey);
+
+        try {
 
             String message = client.checkService();
             System.out.println("message:" + message);
 
-        }finally {
+        } finally {
             client.shutdown();
         }
 

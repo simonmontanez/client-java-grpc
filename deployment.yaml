@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: java-grpc-client
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: java-grpc-client
+    spec:
+      containers:
+        - name: grpc-client
+          image: gcr.io/test-deploy-242000/client-java-grpc
+          env:
+          - name: GRPC_SERVER
+            value: java-grpc-server
+          - name: GRPC_PORT
+            value: "80"
+          - name: GRPC_API_KEY
+            value: "AIzaSyC0LcIf0WJMpbCy9nVpqKZ9RAl8LaK1zJQ"

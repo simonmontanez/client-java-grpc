@@ -1,0 +1,6 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gradle'
+    args: ['unpack','build']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--tag=gcr.io/test-deploy-242000/client-java-grpc', '.']
+images: ['gcr.io/test-deploy-242000/client-java-grpc']

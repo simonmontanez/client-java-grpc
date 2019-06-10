@@ -60,5 +60,11 @@ sourceSets {
 }
 
 
+task unpack(type: Copy) {
+    dependsOn tasks.distZip
+    from(zipTree(tasks.distZip.outputs.files.singleFile))
+    into("build/dependency")
+}
+
 // Define the main class for the application
 mainClassName = 'co.sam.App'
